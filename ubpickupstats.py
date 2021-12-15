@@ -18,9 +18,13 @@ def load_data(nrows):
     data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
     return data
 
-data_load_state = st.text('Loading data...')
+load_placeholder = st.empty()
+load_placeholder.text('Loading data...')
+#with load_placeholder.container():
+#    data_load_state = st.text('Loading data...')
 data = load_data(10000)
-data_load_state.text("Done! (Cached)")
+load_placeholder.text("Done! (Cached)")
+load_placeholder.empty()
 
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
