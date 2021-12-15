@@ -22,7 +22,7 @@ load_placeholder = st.empty()
 load_placeholder.text('Loading data...')
 #with load_placeholder.container():
 #    data_load_state = st.text('Loading data...')
-data = load_data(10000)
+data = load_data(1000)
 load_placeholder.text("Done! (Cached)")
 load_placeholder.empty()
 
