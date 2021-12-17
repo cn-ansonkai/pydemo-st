@@ -1,38 +1,44 @@
 # -*- coding: utf-8 -*-
 
 import streamlit as st
-import pandas as pd
-import numpy as np
+#import pandas as pd
+#from streamlit_echarts import st_pyecharts
+#from pyecharts.charts.basic_charts.bar import Bar
 
-st.title('Uber pickups in NYC. Demo from Streamlit')
+st.set_page_config(page_title='Demos Using Streamlit')
+st.markdown(r"""## pyecharts Streamlit-echarts
+[pyecharts](https://github.com/pyecharts/pyecharts) is a python plotting library which uses [Echarts](https://github.com/ecomfe/echarts) as underlying implementation.
+[Streamlit-echarts](https://github.com/andfanilo/streamlit-echarts) project combines Streamlit and Echarts.
+""")
+# st.title('Demo Using Streamlit')
 
-DATE_COLUMN = 'date/time'
-DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
-            'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
+# DATE_COLUMN = 'date/time'
+# DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
+#             'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
 
-@st.cache
-def load_data(nrows):
-    data = pd.read_csv(DATA_URL, nrows=nrows)
-    lowercase = lambda x: str(x).lower()
-    data.rename(lowercase, axis='columns', inplace=True)
-    data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
-    return data
+# @st.cache
+# def load_data(nrows):
+#     data = pd.read_csv(DATA_URL, nrows=nrows)
+#     lowercase = lambda x: str(x).lower()
+#     data.rename(lowercase, axis='columns', inplace=True)
+#     data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
+#     return data
 
-load_placeholder = st.empty()
-load_placeholder.text('Loading data...')
+# load_placeholder = st.empty()
+# load_placeholder.text('Loading data...')
 #with load_placeholder.container():
 #    data_load_state = st.text('Loading data...')
-data = load_data(1000)
-load_placeholder.text("Done! (Cached)")
-load_placeholder.empty()
+# data = load_data(1000)
+# load_placeholder.text("Done! (Cached)")
+# load_placeholder.empty()
 
-if st.checkbox('Show raw data'):
-    st.subheader('Raw data')
-    st.write(data)
+# if st.checkbox('Show raw data'):
+#     st.subheader('Raw data')
+#     st.write(data)
 
-st.subheader('Number of pickups by hour')
-hist_values = np.histogram(data[DATE_COLUMN].dt.hour, bins=24, range=(0,24))[0]
-st.bar_chart(hist_values)
+# st.subheader('Number of pickups by hour')
+# hist_values = np.histogram(data[DATE_COLUMN].dt.hour, bins=24, range=(0,24))[0]
+# st.bar_chart(hist_values)
 
 # Some number in the range 0-23
 #
