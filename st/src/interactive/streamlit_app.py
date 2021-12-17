@@ -20,7 +20,7 @@ st.markdown(r"""## pyecharts with Streamlit and Streamlit-echarts
 series_data = [("紧急变更", 8),("重大变更", 0),("中型变更", 3),("小型变更", 259),("标准变更", 106)]
 p = (
     Pie()
-    .add(series_name='变更', data_pair=series_data, radius=["40%", "75%"])
+    .add(series_name='变更', data_pair=series_data, radius=["30%", "70%"])
     .set_global_opts(opts.TitleOpts(title="Pie——变更饼图"))
     .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}：{c}项 {d}%"))
     )
