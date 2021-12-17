@@ -6,9 +6,11 @@ import streamlit as st
 #from pyecharts.charts.basic_charts.bar import Bar
 
 st.set_page_config(page_title='Demos Using Streamlit')
-st.markdown(r"""## pyecharts Streamlit-echarts
+st.markdown(r"""## pyecharts with Streamlit and Streamlit-echarts
 [pyecharts](https://github.com/pyecharts/pyecharts) is a python plotting library which uses [Echarts](https://github.com/ecomfe/echarts) as underlying implementation.
 [Streamlit-echarts](https://github.com/andfanilo/streamlit-echarts) project combines Streamlit and Echarts.
+
+### 示例列表
 """)
 # st.title('Demo Using Streamlit')
 
