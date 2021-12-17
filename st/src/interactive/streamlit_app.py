@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 
+from pyecharts.options import series_options
 import streamlit as st
+from pyecharts.charts import Pie
+from pyecharts import options as opts
+#from pyecharts.options import series_options as sopt
+
 #import pandas as pd
-#from streamlit_echarts import st_pyecharts
+from streamlit_echarts import st_pyecharts
 #from pyecharts.charts.basic_charts.bar import Bar
 
 st.set_page_config(page_title='Demos Using Streamlit')
@@ -12,6 +17,15 @@ st.markdown(r"""## pyecharts with Streamlit and Streamlit-echarts
 
 ### 示例列表
 """)
+series_data = [("紧急变更", 8),("重大变更", 0),("中型变更", 3),("小型变更", 259),("标准变更", 106)]
+p = (
+    Pie()
+    .add(series_name='变更', data_pair=series_data, radius=["40%", "75%"])
+    .set_global_opts(opts.TitleOpts(title="Pie——变更饼图"))
+    .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}：{c}项 {d}%"))
+    )
+
+st_pyecharts(p)
 # st.title('Demo Using Streamlit')
 
 # DATE_COLUMN = 'date/time'
