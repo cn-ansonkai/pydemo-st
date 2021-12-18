@@ -4,10 +4,11 @@ from pyecharts.options import series_options
 import streamlit as st
 from pyecharts.charts import Pie
 from pyecharts import options as opts
+import streamlit.components.v1 as components
 #from pyecharts.options import series_options as sopt
 
 #import pandas as pd
-from streamlit_echarts import st_pyecharts
+#from streamlit_echarts import st_pyecharts
 #from pyecharts.charts.basic_charts.bar import Bar
 
 st.set_page_config(page_title='Demos Using Streamlit')
@@ -23,9 +24,11 @@ p = (
     .add(series_name='变更', data_pair=series_data, radius=["30%", "70%"])
     .set_global_opts(opts.TitleOpts(title="Pie——变更饼图"))
     .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}：{c}项 {d}%"))
+    .render_embed()
     )
 
-st_pyecharts(p)
+#st_pyecharts(p)
+components.html(p, width=1000, height=1000)
 # st.title('Demo Using Streamlit')
 
 # DATE_COLUMN = 'date/time'
