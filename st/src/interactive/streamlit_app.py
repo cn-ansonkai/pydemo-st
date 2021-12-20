@@ -36,14 +36,14 @@ p2 = (
     )
 
 #st_pyecharts(p)
-components.html(p, width=1000, height=1000)
+components.html(p, width=1000, height=500)
 
 st.markdown(r"""第二个示例
 
 ---
 """)
 
-components.html(p2, width=1000, height=1000)
+components.html(p2, width=1000, height=500)
 # st.title('Demo Using Streamlit')
 
 # DATE_COLUMN = 'date/time'
