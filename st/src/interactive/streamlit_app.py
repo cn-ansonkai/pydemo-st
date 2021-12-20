@@ -27,8 +27,23 @@ p = (
     .render_embed()
     )
 
+p2 = (
+    Pie()
+    .add(series_name='变更', data_pair=series_data, radius=["30%", "70%"])
+    .set_global_opts(opts.TitleOpts(title="Pie——变更饼图"))
+    .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}：{c}"))
+    .render_embed()
+    )
+
 #st_pyecharts(p)
 components.html(p, width=1000, height=1000)
+
+st.markdown(r"""第二个示例
+
+---
+""")
+
+components.html(p2, width=1000, height=1000)
 # st.title('Demo Using Streamlit')
 
 # DATE_COLUMN = 'date/time'
