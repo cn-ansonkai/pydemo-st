@@ -6,6 +6,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from pyecharts.charts import Pie, Bar
 from pyecharts import options as opts
+from pyecharts.commons.utils import JsCode
 #from pyecharts.options import series_options as sopt
 
 #import pandas as pd
@@ -52,7 +53,13 @@ series_data_y = [
 bb = (
     Bar()
     .add_xaxis(series_data_x)
-    .add_yaxis("", series_data_y, itemstyle_opts=opts.ItemStyleOpts())
+    .add_yaxis("", series_data_y, itemstyle_opts={
+        'shadowBlur': 10,   # 光晕
+        'shadowColor': 'rgba(0, 0, 0, 0.5)',  # 阴影颜色
+        'shadowOffsetY': 5,  # 阴影偏移量——Y方向
+        'shadowOffsetX': 5,  # 阴影偏移量——X方向
+        'color': JsCode(color_js)
+    })
 )
 
 st.set_page_config(page_title='Demos Using Streamlit')
@@ -71,7 +78,8 @@ p = (
     .render_embed()
     )
 """
-components.html(p, width=1000, height=500)
+# components.html(p, width=1000, height=500)
+components.html(bb, width=1000, height=500)
 
 with st.expander("Show Source Code"):
     st.code(code_to_display)
