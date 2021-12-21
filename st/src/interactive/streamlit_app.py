@@ -1,29 +1,63 @@
 # -*- coding: utf-8 -*-
 
-from pyecharts.options import series_options
+#from pyecharts.options import series_options
+from os import name
 import streamlit as st
-from pyecharts.charts import Pie
-from pyecharts import options as opts
 import streamlit.components.v1 as components
+from pyecharts.charts import Pie, Bar
+from pyecharts import options as opts
 #from pyecharts.options import series_options as sopt
 
 #import pandas as pd
 #from streamlit_echarts import st_pyecharts
 #from pyecharts.charts.basic_charts.bar import Bar
+
+# 渐变色的javascript
+color_js = """
+            new echarts.graphic.LinearGradient(
+                                0,
+                                1,
+                                0,
+                                0,
+                                [{offset: 0, color: '#00008B'},
+                                 {offset: 1, color: '#DA70D6'}],
+                                false)
+           """
+
 series_data = [("紧急变更", 8),("重大变更", 0),("中型变更", 3),("小型变更", 259),("标准变更", 106)]
+
+# ECharts 属性来配置itemstyle
 p = (
     Pie()
     .add(series_name='变更', data_pair=series_data, radius=["30%", "70%"])
     .set_global_opts(opts.TitleOpts(title="Pie——变更饼图"))
-    .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c}"))
+    .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c}"), itemstyle_opts={
+        'shadowBlur': 200,   # 光晕
+        'shadowColor': 'rgba(0, 0, 0, 0.5)',  # 阴影颜色
+        'shadowOffsetY': 5,  # 阴影偏移量——Y方向
+        'shadowOffsetX': 5,  # 阴影偏移量——X方向
+        })
     .render_embed()
     )
 
+series_data_x = ["紧急变更", "重大变更", "中型变更", "小型变更", "标准变更"]
+series_data_y = [
+    opts.BarItem(name="紧急变更", value=8), 
+    opts.BarItem(name="重大变更", value=0), 
+    opts.BarItem(name="中型变更", value=3),
+    opts.BarItem(name="小型变更", value=259),
+    opts.BarItem(name="标准变更", value=106)
+]
+
+bb = (
+    Bar()
+    .add_xaxis(series_data_x)
+    .add_yaxis("", series_data_y, itemstyle_opts=opts.ItemStyleOpts())
+)
+
 st.set_page_config(page_title='Demos Using Streamlit')
 st.markdown(r"""## pyecharts with Streamlit and Streamlit-echarts
-[pyecharts](https://github.com/pyecharts/pyecharts) is a python plotting library which uses [Echarts](https://github.com/ecomfe/echarts) as underlying implementation.
-[Streamlit-echarts](https://github.com/andfanilo/streamlit-echarts) project combines Streamlit and Echarts.
-
+[pyecharts](https://github.com/pyecharts/pyecharts) is a python plotting library which uses [ECharts](https://github.com/ecomfe/echarts) as underlying implementation.
 ### 示例列表
 """)
 
