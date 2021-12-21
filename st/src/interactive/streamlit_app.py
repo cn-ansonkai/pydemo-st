@@ -10,14 +10,6 @@ import streamlit.components.v1 as components
 #import pandas as pd
 #from streamlit_echarts import st_pyecharts
 #from pyecharts.charts.basic_charts.bar import Bar
-
-st.set_page_config(page_title='Demos Using Streamlit')
-st.markdown(r"""## pyecharts with Streamlit and Streamlit-echarts
-[pyecharts](https://github.com/pyecharts/pyecharts) is a python plotting library which uses [Echarts](https://github.com/ecomfe/echarts) as underlying implementation.
-[Streamlit-echarts](https://github.com/andfanilo/streamlit-echarts) project combines Streamlit and Echarts.
-
-### 示例列表
-""")
 series_data = [("紧急变更", 8),("重大变更", 0),("中型变更", 3),("小型变更", 259),("标准变更", 106)]
 p = (
     Pie()
@@ -27,23 +19,44 @@ p = (
     .render_embed()
     )
 
-p2 = (
+st.set_page_config(page_title='Demos Using Streamlit')
+st.markdown(r"""## pyecharts with Streamlit and Streamlit-echarts
+[pyecharts](https://github.com/pyecharts/pyecharts) is a python plotting library which uses [Echarts](https://github.com/ecomfe/echarts) as underlying implementation.
+[Streamlit-echarts](https://github.com/andfanilo/streamlit-echarts) project combines Streamlit and Echarts.
+
+### 示例列表
+""")
+
+code_to_display = """
+series_data = [("紧急变更", 8),("重大变更", 0),("中型变更", 3),("小型变更", 259),("标准变更", 106)]
+p = (
     Pie()
     .add(series_name='变更', data_pair=series_data, radius=["30%", "70%"])
     .set_global_opts(opts.TitleOpts(title="Pie——变更饼图"))
     .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}：{c}"))
     .render_embed()
     )
+"""
+# p2 = (
+#     Pie()
+#     .add(series_name='变更', data_pair=series_data, radius=["30%", "70%"])
+#     .set_global_opts(opts.TitleOpts(title="Pie——变更饼图"))
+#     .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}：{c}"))
+#     .render_embed()
+#     )
 
 #st_pyecharts(p)
 components.html(p, width=1000, height=500)
 
-st.markdown(r"""第二个示例
+with st.expander("Show Source Code"):
+    st.code(code_to_display)
 
----
-""")
+# st.markdown(r"""第二个示例
 
-components.html(p2, width=1000, height=500)
+# ---
+# """)
+
+# components.html(p2, width=1000, height=500)
 # st.title('Demo Using Streamlit')
 
 # DATE_COLUMN = 'date/time'
