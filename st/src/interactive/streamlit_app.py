@@ -75,7 +75,7 @@ p = (
     Pie()
     .add(series_name='变更', data_pair=series_data, radius=["30%", "70%"])
     .set_global_opts(opts.TitleOpts(title="Pie——变更饼图"))
-    .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c}项"))
+    .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: 占比{d}"))
     .render_embed()
     )
 """
