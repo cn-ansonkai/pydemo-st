@@ -79,8 +79,8 @@ p = (
     .render_embed()
     )
 """
-# components.html(p, width=1000, height=500)
-components.html(bb, width=1000, height=500)
+components.html(p, width=1000, height=500)
+# components.html(bb, width=1000, height=500)
 
 with st.expander("Show Source Code"):
     st.code(code_to_display)
