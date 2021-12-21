@@ -60,6 +60,7 @@ bb = (
         'shadowOffsetX': 5,  # 阴影偏移量——X方向
         'color': JsCode(color_js)
     })
+    .render_embed()
 )
 
 st.set_page_config(page_title='Demos Using Streamlit')
