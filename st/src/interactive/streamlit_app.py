@@ -90,7 +90,7 @@ p = (
     .render_embed()
     )
 """
-components.html(p, width=500, height=500)
+components.html(p, height=500)
 # components.html(bb, width=1000, height=500)
 
 with st.expander("Show Source Code"):
