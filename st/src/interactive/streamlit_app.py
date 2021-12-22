@@ -28,6 +28,18 @@ color_js = """
 series_data = [("紧急变更", 8),("重大变更", 0),("中型变更", 3),("小型变更", 259),("标准变更", 106)]
 
 # ECharts 属性来配置itemstyle
+# p = (
+#     Pie()
+#     .add(series_name='变更', data_pair=series_data, radius=["30%", "70%"])
+#     .set_global_opts(opts.TitleOpts(title="Pie——变更饼图"))
+#     .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c}"), itemstyle_opts={
+#         'shadowBlur': 10,   # 光晕
+#         'shadowColor': 'rgba(0, 0, 0, 0.5)',  # 阴影颜色
+#         'shadowOffsetY': 5,  # 阴影偏移量——Y方向
+#         'shadowOffsetX': 5,  # 阴影偏移量——X方向
+#         })
+#     .render_embed()
+#     )
 p = (
     Pie()
     .add(series_name='变更', data_pair=series_data, radius=["30%", "70%"])
@@ -38,9 +50,8 @@ p = (
         'shadowOffsetY': 5,  # 阴影偏移量——Y方向
         'shadowOffsetX': 5,  # 阴影偏移量——X方向
         })
-    .render_embed()
+    .render_notebook()
     )
-
 series_data_x = ["紧急变更", "重大变更", "中型变更", "小型变更", "标准变更"]
 series_data_y = [
     opts.BarItem(name="紧急变更", value=8), 
@@ -79,7 +90,7 @@ p = (
     .render_embed()
     )
 """
-components.html(p, width=1000, height=500)
+components.html(p.__html__(), width="100%", height=500)
 # components.html(bb, width=1000, height=500)
 
 with st.expander("Show Source Code"):
