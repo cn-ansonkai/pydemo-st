@@ -50,7 +50,7 @@ p = (
         'shadowOffsetY': 5,  # 阴影偏移量——Y方向
         'shadowOffsetX': 5,  # 阴影偏移量——X方向
         })
-    .render_notebook()
+    .render_embed()
     )
 series_data_x = ["紧急变更", "重大变更", "中型变更", "小型变更", "标准变更"]
 series_data_y = [
@@ -90,7 +90,7 @@ p = (
     .render_embed()
     )
 """
-components.html(p.__html__(), width="100%", height=500)
+components.html(p, width=500, height=500)
 # components.html(bb, width=1000, height=500)
 
 with st.expander("Show Source Code"):
