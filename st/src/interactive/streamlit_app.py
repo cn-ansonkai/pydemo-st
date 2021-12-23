@@ -75,8 +75,10 @@ bb = (
 )
 
 st.set_page_config(page_title='Demos Using Streamlit')
-st.markdown(r"""## pyecharts with Streamlit and Streamlit-echarts
+st.markdown(r"""## pyecharts with Streamlit
+
 [pyecharts](https://github.com/pyecharts/pyecharts) is a python plotting library which uses [ECharts](https://github.com/ecomfe/echarts) as underlying implementation.
+
 ### 示例列表
 """)
 
